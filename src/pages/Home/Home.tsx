@@ -27,7 +27,7 @@ const Home: React.FC = () => {
                 </div>
               </div>
             :
-            <Scene modelPath={modelPath}/>}
+            <Scene setLoading={setLoading} modelPath={modelPath}/>}
         </div>
       </section>
     </div>

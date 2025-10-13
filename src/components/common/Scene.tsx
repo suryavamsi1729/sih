@@ -1,7 +1,7 @@
 // src/Scene.tsx
 import {  Html, OrbitControls, useProgress } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import React, { Suspense } from 'react';
+import React, { Suspense, useEffect, type Dispatch, type SetStateAction } from 'react';
 
 import { useGLTF } from "@react-three/drei";
 
@@ -13,12 +13,16 @@ function Loader() {
 
 interface SceneProps {
   modelPath: string;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-const Scene: React.FC<SceneProps> = ({ modelPath }) => {
+const Scene: React.FC<SceneProps> = ({ modelPath,setLoading }) => {
   const { scene } = useGLTF(modelPath);
-
-
+  useEffect(() => {
+    if (scene) {
+      setLoading(false); // model loaded successfully
+    }
+  }, [scene,setLoading]);
   return (
     <Suspense fallback={<Loader />}>
       <Canvas camera={{ position: [-0.5, 1, 2] }} shadows>

@@ -8,12 +8,12 @@ const Home: React.FC = () => {
   const [modelPath,setModelPath] = useState("");
   return (
     <div className="home-page bg-bg grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-8 ">
-      <section className="flex flex-col justify-start items-start gap-4 bg-primary border border-border rounded-lg p-6">
+      <section className="flex flex-col justify-start items-start gap-4 bg-primary border border-border rounded p-6">
         <h1 className="text-accent text-2xl/[24px] font-bold ">Parameters</h1>
         <div className="w-full h-[1px] bg-border"></div>
         <YantrasParametersForm setModelPath={setModelPath}/>
       </section>
-      <section className="flex h-full flex-col justify-start items-start gap-4 bg-primary border border-border rounded-lg p-6">
+      <section className="flex h-full flex-col justify-start items-start gap-4 bg-primary border border-border rounded p-6">
         <div className="w-full h-full flex flex-col justify-start items-center  gap-2">
             {modelPath==""?
               <div className="w-full h-full flex flex-col justify-start items-center gap-2 mt-12 px-12" >

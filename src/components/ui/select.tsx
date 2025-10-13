@@ -93,7 +93,7 @@ export default function Select({
         </button>
 
         {open && (
-          <ul   tabIndex={-1} className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-md border border-border bg-secondary py-1 px-1 text-sm" onKeyDown={onKeyDown}>
+          <ul   tabIndex={-1} className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-[6px] border border-border bg-secondary py-1 px-1 text-sm" onKeyDown={onKeyDown}>
             {options.length === 0 && (
               <li className="px-3 py-2 text-text">No options</li>
             )}

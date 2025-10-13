@@ -5,6 +5,7 @@ export type Option = {
   value: string;
   label: string;
   description?: string;
+  model?: string,
 };
 
 type SelectProps = {
@@ -78,21 +79,25 @@ export default function Select({
           {label}
         </label>
       )}
+
       <div className="relative w-full">
-        <button id={id} type="button"  disabled={disabled} onClick={() => setOpen((v) => !v)} onKeyDown={onKeyDown}
+        <button id={id} type="button" onClick={() => setOpen((v) => !v)} onKeyDown={onKeyDown}
           className={`w-full flex items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm transition disabled:cursor-not-allowed bg-secondary border-border `}>
           <div className="flex items-center gap-2 truncate">
             <span className={`truncate text-text`}>
               {selected ? selected.label : placeholder}
             </span>
           </div>
+
           <ChevronDown size={16} className="shrink-0 text-text" />
         </button>
+
         {open && (
           <ul   tabIndex={-1} className="absolute z-40 mt-1 max-h-60 w-full overflow-auto rounded-md border border-border bg-secondary py-1 px-1 text-sm" onKeyDown={onKeyDown}>
             {options.length === 0 && (
               <li className="px-3 py-2 text-text">No options</li>
             )}
+
             {options.map((opt, idx) => {
               const isSelected = selected?.value === opt.value;
               const isHighlighted = idx === highlightedIndex;

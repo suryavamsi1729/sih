@@ -4,23 +4,27 @@ import Button from "../../components/ui/button";
 import Input from "../../components/ui/input";
 import Label from "../../components/ui/lable";
 import Select, { type Option } from "../../components/ui/select";
-import { useState } from "react";
+import { useState, type Dispatch, type SetStateAction } from "react";
 
-const YantrasParametersForm: React.FC = () => {
+interface YantrasParametersFormProps{
+    setModelPath? : Dispatch<SetStateAction<string>>;
+}
+
+const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPath}) => {
     const [formData, setFormData] = useState({
         logitude: "",
         latitude: "",
         yantra: "",
-        scale: "",
+        scale: "1.0",
         median: "",
-      });
-      const yantraOptions: Option[] = [
-        { value: "samrat", label: "Samrat"  },
-        { value: "rama", label: "Rama"  },
-        { value: "digmasa", label: "Digmasa" },
-        { value: "nadivalaya", label: "Nadivalaya"  },
-        { value: "kranthi vritta", label: "Kranthi Vritta" },
-      ];
+    });
+    const yantraOptions: Option[] = [
+        { value: "samrat", label: "Samrat", model: "/assets/models/model1.glb" },
+        { value: "rama", label: "Rama", model: "/assets/models/model2.glb"  },
+        { value: "digmasa", label: "Digmasa", model: "/assets/models/model3.glb" },
+        { value: "nadivalaya", label: "Nadivalaya", model: "/assets/models/model4.glb"  },
+        { value: "kranthi vritta", label: "Kranthi Vritta" , model: "/assets/models/model5.glb" },
+    ];
       const medianOptions: Option[] =[
         { value: "greenwich", label: "Greenwich (Modern)"  },
         { value: "ujjain", label: "Ujjain (Historical)"  },
@@ -48,7 +52,16 @@ const YantrasParametersForm: React.FC = () => {
 
     return (
         <form className="w-full flex flex-col justify-start items-start gap-6">
-            <Select label="Select Yantra" placeholder="Pick one..." options={yantraOptions} value={formData.yantra} onChange={(val) => setFormData({ ...formData, yantra: val || "" })}/>
+            <Select label="Select Yantra" placeholder="Pick one..." options={yantraOptions} value={formData.yantra} onChange={
+                (val) => {
+                    setFormData({ ...formData, yantra: val || "" });
+                    const selectedOption = yantraOptions.filter((option)=>option.value==val)[0];
+                    if(selectedOption && setModelPath && selectedOption.model){
+                        setModelPath(selectedOption.model);
+                    }
+                }
+
+            }/>
             <div className={`w-full flex flex-col gap-2`}>
               <Label lable="Location Coordinate" htmlFor=""/>
               <div className="w-full flex flex-row gap-2">
@@ -62,7 +75,7 @@ const YantrasParametersForm: React.FC = () => {
             </div>
             <div className={`w-full flex flex-col gap-1.5`}>
               <Label lable="Scale Factor" htmlFor=""/>
-                <Input type="number" step={0.1} placeholder="Latitude (e.g., 26.9124" value={formData.scale} onChange={(e) => setFormData({ ...formData, scale: e.target.value })}  />
+                <Input type="number" step={0.1} value={formData.scale} onChange={(e) => setFormData({ ...formData, scale: e.target.value })}  />
             </div>
             <Select label="Reference Meridian" placeholder="Pick one..." options={medianOptions} value={formData.median} onChange={(val) => setFormData({ ...formData, median: val || "" })}/>
             <Button  className="w-full flex flex-row gap-2 font-semibold border border-border bg-accent text-bg hover:bg-[#ffb84d] hover:cursor-pointer mt-2" size="md" variant="outline">

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import YantrasParametersForm from "./YantrasParametersForm";
 import Scene from "../../components/common/Scene";
+import Location from "./Location";
 
 
 const Home: React.FC = () => {
@@ -16,7 +17,7 @@ const Home: React.FC = () => {
       </section>
       <section className="flex h-full flex-col justify-start items-start gap-4 bg-primary border border-border rounded-[8px] p-6">
         <div className="w-full h-full flex flex-col justify-start items-center  gap-2">
-            {modelPath==""?
+            {/* {modelPath==""?
               <div className="w-full h-full flex flex-col justify-start items-center gap-2 mt-12 px-12" >
                 <div className="w-full h-auto flex flex-col justify-start items-center">
                   <h2 className="text-2xl font-semibold text-accent">Generated Output</h2>
@@ -27,7 +28,8 @@ const Home: React.FC = () => {
                 </div>
               </div>
             :
-            <Scene setLoading={setLoading} modelPath={modelPath}/>}
+            <Scene setLoading={setLoading} modelPath={modelPath}/>} */}
+            <Location/>
         </div>
       </section>
     </div>

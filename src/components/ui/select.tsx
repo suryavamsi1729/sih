@@ -82,7 +82,7 @@ export default function Select({
 
       <div className="relative w-full">
         <button id={id} type="button" onClick={() => setOpen((v) => !v)} onKeyDown={onKeyDown}
-          className={`w-full flex items-center justify-between gap-2 rounded-md border px-3 py-2 text-sm transition disabled:cursor-not-allowed bg-secondary border-border `}>
+          className={`w-full flex items-center justify-between gap-2 rounded-[6px] border px-3 py-2 text-sm transition disabled:cursor-not-allowed bg-secondary border-border `}>
           <div className="flex items-center gap-2 truncate">
             <span className={`truncate text-text`}>
               {selected ? selected.label : placeholder}
@@ -108,7 +108,7 @@ export default function Select({
                   onMouseEnter={() => setHighlightedIndex(idx)}
                   onMouseLeave={() => setHighlightedIndex(-1)}
                   onClick={() => selectValue(opt.value)}
-                  className={`flex cursor-pointer items-center justify-between gap-2 px-4 py-3 rounded-sm ${
+                  className={`flex cursor-pointer items-center justify-between gap-2 px-4 py-3 rounded-[4px] ${
                     isHighlighted ? "bg-primary" : "hover:bg-primary"
                   } ${isSelected ? "font-semibold" : "font-normal"} truncate`}
                 >

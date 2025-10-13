@@ -36,7 +36,7 @@ const Input: React.FC<InputProps> = ({
         disabled={disabled}
         required={required}
         step={step}
-        className={`w-full rounded-md border border-border bg-secondary  px-3 py-2 text-sm text-text placeholder:text-[#888] transition focus:outline-none disabled:cursor-not-allowed ${
+        className={`w-full rounded-[6px] border border-border bg-secondary  px-3 py-2 text-sm text-text placeholder:text-[#888] transition focus:outline-none disabled:cursor-not-allowed ${
           error ? "border-red-500 focus:ring-red-500" : "hover:border-slate-300"
         }`}
       />

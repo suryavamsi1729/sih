@@ -20,6 +20,7 @@ const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPa
         scale: "1.0",
         median: "",
     });
+    
     const yantraOptions: Option[] = [
         { value: "samrat", label: "Samrat", model: "/assets/models/model1.glb" },
         { value: "rama", label: "Rama", model: "/assets/models/model2.glb"  },

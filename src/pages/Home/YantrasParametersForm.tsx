@@ -8,9 +8,11 @@ import { useState, type Dispatch, type SetStateAction } from "react";
 
 interface YantrasParametersFormProps{
     setModelPath? : Dispatch<SetStateAction<string>>;
+    loading : boolean;
+    setLoading :  Dispatch<SetStateAction<boolean>>;
 }
 
-const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPath}) => {
+const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPath,setLoading,loading}) => {
     const [formData, setFormData] = useState({
         logitude: "",
         latitude: "",
@@ -52,12 +54,14 @@ const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPa
 
     return (
         <form className="w-full flex flex-col justify-start items-start gap-6">
-            <Select label="Select Yantra" placeholder="Pick one..." options={yantraOptions} value={formData.yantra} onChange={
+            <Select className={`${loading?"cursor-not-allowed":""}`} label="Select Yantra" placeholder="Pick one..." options={yantraOptions} value={formData.yantra} onChange={
                 (val) => {
+                    setLoading(true);
                     setFormData({ ...formData, yantra: val || "" });
                     const selectedOption = yantraOptions.filter((option)=>option.value==val)[0];
                     if(selectedOption && setModelPath && selectedOption.model){
                         setModelPath(selectedOption.model);
+                        setLoading(false);
                     }
                 }
 

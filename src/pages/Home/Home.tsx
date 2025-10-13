@@ -6,12 +6,13 @@ import Scene from "../../components/common/Scene";
 
 const Home: React.FC = () => {
   const [modelPath,setModelPath] = useState("");
+  const [loading,setLoading] = useState(false);
   return (
     <div className="home-page bg-bg grid grid-cols-1 lg:grid-cols-[350px_1fr] gap-8 ">
       <section className="flex flex-col justify-start items-start gap-4 bg-primary border border-border rounded-[8px] p-6">
         <h1 className="text-accent text-2xl/[24px] font-bold ">Parameters</h1>
         <div className="w-full h-[1px] bg-border"></div>
-        <YantrasParametersForm setModelPath={setModelPath}/>
+        <YantrasParametersForm loading={loading} setModelPath={setModelPath} setLoading={setLoading}/>
       </section>
       <section className="flex h-full flex-col justify-start items-start gap-4 bg-primary border border-border rounded-[8px] p-6">
         <div className="w-full h-full flex flex-col justify-start items-center  gap-2">

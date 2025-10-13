@@ -1,10 +1,9 @@
 import {useMapsLibrary} from '@vis.gl/react-google-maps';
-import React, {
+import {
   type ForwardedRef,
   forwardRef,
   useEffect,
   useImperativeHandle,
-  useMemo,
   useState
 } from 'react';
 import {useMap3DCameraEvents} from './use-map-3d-camera-events';
@@ -47,7 +46,7 @@ export const Map3D = forwardRef(
       });
     }, []);
 
-    const {center, heading, tilt, range, roll, ...map3dOptions} = props;
+    const {center, ...map3dOptions} = props;
 
     useDeepCompareEffect(() => {
       if (!map3DElement) return;

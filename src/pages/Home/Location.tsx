@@ -18,12 +18,12 @@ const Map3DExample = () => {
     setViewProps(oldProps => ({...oldProps, ...props}));
   }, []);
 
-  const handleMapClick = useCallback((ev: MapMouseEvent) => {
-    if (!ev.detail.latLng) return;
+//   const handleMapClick = useCallback((ev: MapMouseEvent) => {
+//     if (!ev.detail.latLng) return;
 
-    const {lat, lng} = ev.detail.latLng;
-    setViewProps(p => ({...p, center: {lat, lng, altitude: 0}}));
-  }, []);
+//     const {lat, lng} = ev.detail.latLng;
+//     setViewProps(p => ({...p, center: {lat, lng, altitude: 0}}));
+//   }, []);
 
   return (
     <>

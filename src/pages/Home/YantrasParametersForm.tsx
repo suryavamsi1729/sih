@@ -7,7 +7,7 @@ import Select, { type Option } from "../../components/ui/select";
 import { useState, type Dispatch, type SetStateAction } from "react";
 
 interface YantrasParametersFormProps{
-    setModelPath? : Dispatch<SetStateAction<string>>;
+    setModelPath : Dispatch<SetStateAction<string|null>>;
     loading : boolean;
     setLoading :  Dispatch<SetStateAction<boolean>>;
 }
@@ -64,7 +64,6 @@ const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPa
                         setModelPath(selectedOption.model);
                     }
                 }
-
             }/>
             <div className={`w-full flex flex-col gap-2`}>
               <Label lable="Location Coordinate" htmlFor=""/>
@@ -82,7 +81,7 @@ const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPa
                 <Input type="number" step={0.1} value={formData.scale} onChange={(e) => setFormData({ ...formData, scale: e.target.value })}  />
             </div>
             <Select label="Reference Meridian" placeholder="Pick one..." options={medianOptions} value={formData.median} onChange={(val) => setFormData({ ...formData, median: val || "" })}/>
-            <Button  className="w-full flex flex-row gap-2 font-semibold border border-border bg-accent text-bg hover:bg-[#ffb84d] hover:cursor-pointer mt-2" size="md" variant="outline">
+            <Button onClick={()=>{setModelPath(null)}}  className="w-full flex flex-row gap-2 font-semibold border border-border bg-accent text-bg hover:bg-[#ffb84d] hover:cursor-pointer mt-2" size="md" variant="outline">
                 <p>Generate Dimensionss</p>
             </Button>
         </form>

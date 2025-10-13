@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 @theme {
   /* colors */
@@ -8,5 +9,6 @@
   --color-accent: #ff9900;
   --color-text: #e0e0e0;
   --color-border: #444;
-  
+
 }
+

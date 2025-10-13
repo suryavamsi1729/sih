@@ -14,7 +14,7 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
       {/* Header */}
       <AppHeader />
       {/* Main Content */}
-      <main id="main" className="flex-1 mt-8 px-4 sm:px-6 lg:px-8" tabIndex={-1}>
+      <main id="main" className="flex-1 my-12 px-4 sm:px-6 lg:px-8" tabIndex={-1}>
          <Outlet />
       </main>
       {/* Footer */}

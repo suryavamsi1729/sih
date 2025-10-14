@@ -1,14 +1,14 @@
-import {APIProvider} from '@vis.gl/react-google-maps';
+import { APIProvider} from '@vis.gl/react-google-maps';
 import { useCallback, useState } from 'react';
 import {Map3D, type Map3DCameraProps} from '../../components/common/map-3d';
 
 
 const INITIAL_VIEW_PROPS = {
-  center: {lat: 37.72809, lng: -119.64473, altitude: 1300},
-  range: 5000,
-  heading: 61,
-  tilt: 69,
-  roll: 0
+  center:{ lat: 37.76, lng: -121.63, altitude: 20 },
+  range:1500,
+  tilt:75,
+  heading:0,
+  roll:0,
 };
 
 const Map3DExample = () => {
@@ -41,7 +41,7 @@ const Map3DExample = () => {
 
 const Location: React.FC = () => {
     return(
-        <APIProvider apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} version='alpha'>
+        <APIProvider libraries={['maps3d']} apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} version='alpha'>
             <Map3DExample />
         </APIProvider>
     );

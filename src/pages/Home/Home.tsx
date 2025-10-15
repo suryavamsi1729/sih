@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import YantrasParametersForm from "./YantrasParametersForm";
 import Scene from "../../components/common/Scene";
 import Location from "./Location";
+import SamratYantraView from "../../components/table/table";
 
 
 const Home: React.FC = () => {
@@ -36,6 +37,12 @@ const Home: React.FC = () => {
             </div>}
             
         </div>
+      </section>
+      <section className="w-full h-aut  col-span-2">
+        {
+        isMapOpen && <SamratYantraView/>
+      }
+
       </section>
     </div>
   );

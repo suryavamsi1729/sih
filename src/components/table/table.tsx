@@ -18,7 +18,7 @@ const SamratYantraView: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 p-6 bg-black text-white min-h-screen">
+    <div className="flex flex-col md:flex-row gap-6 p-6 bg-primary border border-border rounded-[8px] text-white min-h-screen">
       {/* Table Section */}
       <div className="md:w-1/2 bg-gray-900 rounded-2xl shadow-lg p-6 flex flex-col justify-center">
         <h2 className="text-2xl font-semibold mb-4 text-center text-white">

@@ -3,7 +3,7 @@ import AppHeader from "../headers/AppHeader";
 import type { IBasicFCProps } from "../../types";
 import { Outlet } from "react-router-dom";
 import AppFooter from "../footers/AppFooter";
-import SamratYantraView from "../table/table";
+
 
 interface AppLayoutProps extends IBasicFCProps{
   children?:React.ReactNode,
@@ -20,7 +20,7 @@ const AppLayout: React.FC<AppLayoutProps> = () => {
       </main>
       {/* Footer */}
       <div>
-      <SamratYantraView />
+      
     </div>
       <AppFooter/>
     </div>

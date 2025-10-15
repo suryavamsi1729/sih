@@ -5,7 +5,7 @@ import { Menu, X } from "lucide-react";
 const navLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
-  { label: "Yantra Guide", path: "/yantraguide" },
+  { label: "Yantra Guide", path: "https://www.jantarmantar.org/index.html" },
 ];
 
 const AppHeader: React.FC = () => {

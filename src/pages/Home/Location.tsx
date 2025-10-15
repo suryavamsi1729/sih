@@ -30,7 +30,7 @@ const Map3DExample = () => {
       <Map3D
         {...viewProps}
         onCameraChange={handleCameraChange}
-        defaultLabelsDisabled
+        
       />
       {/* <MiniMap camera3dProps={viewProps} onMapClick={handleMapClick}></MiniMap> */}
     </>
@@ -41,7 +41,7 @@ const Map3DExample = () => {
 
 const Location: React.FC = () => {
     return(
-        <APIProvider libraries={['maps3d']} apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} version='alpha'>
+        <APIProvider libraries={['maps3d']} apiKey={import.meta.env.VITE_GOOGLE_MAPS_API_KEY} version='beta'>
             <Map3DExample />
         </APIProvider>
     );

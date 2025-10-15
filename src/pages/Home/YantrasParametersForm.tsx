@@ -4,22 +4,25 @@ import Button from "../../components/ui/button";
 import Input from "../../components/ui/input";
 import Label from "../../components/ui/lable";
 import Select, { type Option } from "../../components/ui/select";
-import { useState, type Dispatch, type SetStateAction } from "react";
+import {  type Dispatch, type SetStateAction } from "react";
+import { useFormData } from "../../hooks/useFormData";
 
 interface YantrasParametersFormProps{
     setModelPath : Dispatch<SetStateAction<string|null>>;
     loading : boolean;
     setLoading :  Dispatch<SetStateAction<boolean>>;
+    setMapOpen : Dispatch<SetStateAction<boolean>>;
 }
 
-const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPath,setLoading,loading}) => {
-    const [formData, setFormData] = useState({
-        logitude: "",
-        latitude: "",
-        yantra: "",
-        scale: "1.0",
-        median: "",
-    });
+const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPath,setLoading,loading,setMapOpen}) => {
+    // const [formData, setFormData] = useState({
+    //     logitude: "",
+    //     latitude: "",
+    //     yantra: "",
+    //     scale: "1.0",
+    //     median: "",
+    // });
+    const {formData, setFormData} = useFormData();
 
     const yantraOptions: Option[] = [
         { value: "samrat", label: "Samrat", model: "/assets/models/model1.glb" },
@@ -39,7 +42,7 @@ const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPa
               (position) => {
                   // what to do once we have the position
                   const { latitude, longitude } = position.coords;
-                  setFormData({...formData,latitude:String(latitude),logitude:String(longitude)})
+                  setFormData({...formData,latitude:String(latitude),longitude:String(longitude)})
               },
               (error) => {
                   // display an error if we cant get the users position
@@ -69,7 +72,7 @@ const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPa
               <Label lable="Location Coordinate" htmlFor=""/>
               <div className="w-full flex flex-row gap-2">
                 <Input id="latitude" type="text" placeholder="Latitude (e.g., 26.9124" value={formData.latitude} onChange={(e) => setFormData({ ...formData, latitude: e.target.value })}  />
-                <Input id="latitude" type="text" placeholder="Latitude (e.g., 26.9124" value={formData.logitude} onChange={(e) => setFormData({ ...formData, logitude: e.target.value })}  />
+                <Input id="latitude" type="text" placeholder="Latitude (e.g., 26.9124" value={formData.longitude} onChange={(e) => setFormData({ ...formData, longitude: e.target.value })}  />
               </div>
               <Button onClick={()=>{getUserLocation()}} className="w-full flex flex-row gap-2 border border-border bg-secondary text-text hover:bg-[#4a4a4a] hover:cursor-pointer" size="md" variant="outline">
                 <LocateFixed size={20}/>
@@ -81,7 +84,7 @@ const YantrasParametersForm: React.FC<YantrasParametersFormProps> = ({setModelPa
                 <Input type="number" step={0.1} value={formData.scale} onChange={(e) => setFormData({ ...formData, scale: e.target.value })}  />
             </div>
             <Select label="Reference Meridian" placeholder="Pick one..." options={medianOptions} value={formData.median} onChange={(val) => setFormData({ ...formData, median: val || "" })}/>
-            <Button onClick={()=>{setModelPath(null)}}  className="w-full flex flex-row gap-2 font-semibold border border-border bg-accent text-bg hover:bg-[#ffb84d] hover:cursor-pointer mt-2" size="md" variant="outline">
+            <Button onClick={()=>{setMapOpen(true)}}  className="w-full flex flex-row gap-2 font-semibold border border-border bg-accent text-bg hover:bg-[#ffb84d] hover:cursor-pointer mt-2" size="md" variant="outline">
                 <p>Generate Dimensionss</p>
             </Button>
         </form>

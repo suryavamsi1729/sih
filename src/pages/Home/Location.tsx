@@ -1,17 +1,20 @@
 import { APIProvider} from '@vis.gl/react-google-maps';
 import { useCallback, useState } from 'react';
 import {Map3D, type Map3DCameraProps} from '../../components/common/map-3d';
+import { useFormData } from '../../hooks/useFormData';
 
 
-const INITIAL_VIEW_PROPS = {
-  center:{ lat: 37.76, lng: -121.63, altitude: 20 },
+
+
+const Map3DExample = () => {
+  const {formData} = useFormData()
+  const INITIAL_VIEW_PROPS = {
+  center:{ lat: Number(formData.latitude), lng: Number(formData.longitude), altitude: 20 },
   range:1500,
   tilt:75,
   heading:0,
   roll:0,
 };
-
-const Map3DExample = () => {
   const [viewProps, setViewProps] = useState(INITIAL_VIEW_PROPS);
 
   const handleCameraChange = useCallback((props: Map3DCameraProps) => {

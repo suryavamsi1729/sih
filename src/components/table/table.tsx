@@ -49,7 +49,7 @@ const SamratYantraView: React.FC = () => {
       {/* Image Section */}
       <div className="md:w-1/2 bg-gray-900 rounded-2xl shadow-lg p-4 flex justify-center items-center">
         <img
-          src="src/assets/samart.jpeg"
+          src="/assets/images/samart.jpeg"
           alt="Samrat Yantra 3D Visualization"
           className="rounded-lg object-contain w-full h-auto border border-gray-700"
         />
